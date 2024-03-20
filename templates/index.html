@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <title>um card</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        class="card"
+        :class="{ 'show-login': isLogin, 'show-register': isRegister, 'show-forgot': isForgot }"
+      >
+        <div class="card-inner">
+          <!--Login-->
+
+          <div class="login face">
+            <h1>Login</h1>
+            <form method="post">
+              <div class="txt_field">
+                <input type="text" required />
+                <span></span>
+                <label>E-mail</label>
+              </div>
+              <div class="txt_field">
+                <input type="password" required />
+                <span></span>
+                <label>Password</label>
+              </div>
+            </form>
+
+            <div class="group-button">
+              <button @click="showRegister" class="glow-on-hover">
+                Cadastro
+              </button>
+              <button @click="showForgot" class="glow-on-hover">
+                Esqueci a Senha
+              </button>
+            </div>
+          </div>
+
+          <!-- cadastro -->
+
+          <div class="register face">
+            <h1>Cadastro</h1>
+            <form method="POST" action="/cadastrar">
+              <div class="txt_field2">
+                <input type="text" id="nome" required />
+                <span></span>
+                <label>Nome completo</label>
+              </div>
+              <div class="txt_field2">
+                <input type="text" id="email" required />
+                <span></span>
+                <label>Endereço de E-mail</label>
+              </div>
+
+              <div class="txt_field2">
+                <input type="password" id="senha" required />
+                <span></span>
+                <label>Senha:</label>
+              </div>
+              <div class="txt_field2">
+                <input
+                  type="password"
+                  name="check_senha"
+                  id="check_senha"
+                  required
+                />
+                <span></span>
+                <label>Confirmar senha:</label>
+              </div>
+            </form>
+
+            <div class="group-button">
+              <button @click="showLogin" class="glow-on-hover">Login</button>
+              <button type="submit" class="glow-on-hover" name="cadastrar">
+                cadastrar
+              </button>
+            </div>
+          </div>
+
+          <!--Recuperar senha-->
+
+          <div class="forgot face">
+            <h1>Recuperar Senha</h1>
+            <form method="post">
+              <div class="txt_field">
+                <input type="text" required />
+                <span></span>
+                <label>E-mail</label>
+              </div>
+              <div class="txt_field">
+                <input type="text" required />
+                <span></span>
+                <label>Confirme o e-mail</label>
+              </div>
+              <div class="txt_field">
+                <input type="text" required />
+                <span></span>
+                <label>Nova senha</label>
+              </div>
+            </form>
+            <div class="group-button">
+              <button @click="showLogin" class="glow-on-hover">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
